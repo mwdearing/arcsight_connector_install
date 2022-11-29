@@ -1,0 +1,7 @@
+---
+# tasks file for connector_install
+
+- include_tasks: tasks/deploy_properties_file.yml
+- include_tasks: tasks/copy_binary.yml
+- include_tasks: tasks/install.yml
+- include_tasks: tasks/cleanup.yml

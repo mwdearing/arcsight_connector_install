@@ -1,0 +1,78 @@
+#
+# Arcsight's Silent Properties File
+#
+
+numberofcycles=0
+USER_INSTALL_DIR={{ install_dir }}{{ connector }}
+INSTALLER_UI=SILENT
+ARCSIGHT_AGENTSETUP_PROPERTIES=/tmp/silent.properties
+
+
+containeroptionsconfig.fips.enabled=Disabled
+
+containeroptionsconfig.remote.management.enabled=Enabled
+
+containeroptionsconfig.remote.management.listener.port={remote_port}
+
+containeroptionsconfig.preferIPv6.option=IPv4
+
+containeroptionsconfig.fpencryption.enabled=Disabled
+
+containeroptionsconfig.fpencryption.event.fields=rawEvent,requestUrl,requestCookies,deviceCustomNumber1,deviceCustomString1,deviceDomain,deviceEventClassId,deviceVendor,deviceProduct,sourceHostName,sourceNtDomain,sourcePort,sourceUserName,sourceUserId,sourceUserPrivileges,destinationHostName,destinationNtDomain,destinationPort,destinationUserName,destinationUserId,destinationUserPrivileges
+
+continue=Yes
+
+# =========================================================
+# Panel 'connectortype'
+# =========================================================
+#   Select the connector to configure
+#
+# Type
+# Possible values: [awss3 | apache_access_multifolder | apache_error_file | apache_tomcat_file | flexasset_file | firesight_cef_syslog | cefencryptedsyslog | cef_file_scanner | cef_file | hadoop_dfs | cef_multifolder_file | cloud_cef | ngflexcounteract | sdkfilereader | sdkiddatabase | sdkjsonfolderfollower | sdkjsonmultifolderfollower | kafka_bus_pipe | flexmulti_db | sdkmultifolderreader | sdkrfilereader | sdkfolderreader | sdkrest | sdkscannerdatabase | sdkscannerregex | sdkscannerxml | sdktbdatabase | sdkxmlfolderfollower | logger_streaming | amazon_cloudtrail | bluecoat_ng_file | box_oauth2 | caacf2_file | singlesignon_file | catopsecret_file | ironport_file | ironport_websecurity_file | ciscoids_sdee | changeauditor_db | questintrust_db | dragon_exportlog | dragon_file | fsecure_file | aladdin_file | googlecloud | atalla_ipc_db | hpopenvms_file | hp_bsm_omi_ws | hpom_iws | hpuxaudit_file | bigfix_api | db2_multi_instance_file | audjrn_file | dominowebaccess_file | os390_nvas_file | os390_nvas_session_file | racf_file | os390_syslogrt | siteprotector_db | os390_file | websphere_file | idmef_file | cisco_netflow | ipfix | jboss_file | juniper_sbr_file | kaspersky_db | linux_auditd | epo_db | intrushield_db | intrushield_timebased_db | foundscan_db | mcafee_webgateway_file | message_trace_api | microsoft365defender | macsng_db | dns_dga_tracelog_multifolder_file | dhcp_file | dns_tracelog_multifolder_file | exchange_message_tracking_log_multiple_server_file | microsoftforefront_db | fpsmc_db | isa_multiserver_file | iis_multiserver | ias_file | office365 | sharepoint_db | multisqlserver_audit_db | sccm_db | momng_db | winc | netapp_filer_eventlog | netapp_file | securitymanager_db | nmap_file | novell_db | okta_api | oracle_db | oracleauditvault_db | oraclesysdba_xml_file | oraclesysdba_file | oracle_unified_audit_trail_db | weblogic_multi_file | oval_file | puresight_db | qualys | nexpose_xml | simplesyslog | saint_xml_file | sapaudit_multifolder_file | sapaudit_file | sflow | unified_snmp | snort_ng_file | sophos_db | sourcefire_api | squid_file | sunonedirectoryservermultiinstance_file | sunonedirectoryserver_file | sunonewebserver_access_multifolder | sybase_db | symantecantivirusce_file | symantecantivirusce_multifilereader | symanteccsp_db | symantecendpointprotection_db | syslog | syslog_file | syslogng | syslog_pipe | tcpdump | nessus_dotnessus | nessus_securitycenter | testalertng | tippingpoint_sms_syslog | trendmicroapexcentral_multi_db | trendmicrong_db | trendmicrong_multi_db | ncircle_xml_file | tw_manager_file | login_process | vmware_webservice | bro_ng_file]
+connectortype.connectortype=syslogng
+
+connectorparameter.port=1999
+
+connectorparameter.ipaddress=(ALL)
+
+connectorparameter.protocol=Raw TCP
+
+connectorparameter.forwarder=false
+
+connectorparameter.syslogng.ietfstandard.format.enabled=false
+
+connectordestinationtypes=cefkafka
+
+connectordestinationnew.bootstraphosts=plarcwk-1-0001.thrivent.com\:9092,plarcwk-1-0002.thrivent.com\:9092,plarcwk-1-0005.thrivent.com\:9092
+
+connectordestinationnew.usessl=false
+
+connectordestinationnew.acknowledgementmode=none
+
+connectordestinationnew.contenttype=CEF (for IPv4 and IPv6)
+
+connectordestinationnew.topic=th-cef
+
+connectordestinationnew.compression.type=zstd
+
+connectordestinationnew.esmversion=7.2.x and above
+
+connectordestinationnew.usesslauth=false
+
+connectordetails.name={{ connector }}
+
+connectordetails.location=/test/location
+
+connectordetails.devicelocation=datacenter
+
+connectordetails.comment=This connector was built by Ansible
+
+serviceselection=installService
+
+servicedetails.internalname={{ connector }}
+
+servicedetails.displayName={{ connector }}
+
+servicedetails.auto=true
+
+continueorexit=exit

@@ -1,0 +1,16 @@
+---
+- name: "Prepping TMP files for cleanup."
+  find:
+    paths: /tmp
+    recurse: false
+    patterns:  
+      - '{{ binary }}'
+      - 'silent.properties'
+    file_type: file
+  register: files_to_delete
+
+- name: "Cleaning up TMP files."
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ files_to_delete.files }}"

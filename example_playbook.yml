@@ -1,0 +1,11 @@
+---
+- hosts: test
+  become: yes
+  vars: 
+    - connector: "test_1"
+    - install_dir: "/opt/arcsight/connectors/"
+    - binary: "ArcSight-8.4.0.8955.0-Connector-Linux64.bin"
+    - remote_port: "9005"
+
+  roles: 
+  - role: /etc/ansible/roles/connector_install

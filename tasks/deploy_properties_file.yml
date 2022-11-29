@@ -1,0 +1,20 @@
+---
+  - name: Searching for any old silent.properties files
+    find:
+      paths: "/tmp/"
+      recurse: false
+      use_regex: yes
+      patterns: 'silent.properties'
+      file_type: file
+    register: files_to_delete
+
+  - name: "Removing old silent.properties file."
+    file:
+      path: "{{ item.path }}"
+      state: absent
+    with_items: "{{ files_to_delete.files }}"
+
+  - name: Deploy silent.properties file
+    template:
+      src: templates/silent.properties.jn2
+      dest: /tmp/silent.properties
